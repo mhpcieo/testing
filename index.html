@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalkulator Karbon</title>
+  <script src="script.js"></script>
+  <script src="switch.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <section>
+      <div class="Wadah">
+        <div class="Tab-Box">
+          <button class="tab_btn">Alat elektronik</button>
+          <button class="tab_btn">Listrik Rumah</button>
+          <button class="tab_btn">Listrik AC</button>
+          <div class="line"></div>
+        </div>
+        <!-- alat elektronik -->
+        <div class="satu">
+          <div class="dua">
+            <div class="alat-elektronik">
+              <h2>Hitung Jejak Karbon Peralatan Listrik Anda</h2>
+              <div class="input-container">
+                <label>Jenis Peralatan Listrik</label>
+                <select class="device" name="device">
+                  <option value="" disabled selected>Pilih Perangkat</option>
+                  <option value="smartphone">Smartphone</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="tv">TV</option>
+                  <option value="refrigerator">Kulkas</option>
+                  <option value="ricecooker">RiceCooker</option>
+                </select>
+              </div>
+              <div class="input-container">
+                <label>Jumlah Satuan</label>
+                <input type="number" min="1" placeholder="Jumlah Satuan" id="jumlahSatuan" />
+              </div>
+              <div class="input-container">
+                <label>Lama Penggunaan (jam)</label>
+                <input type="number" min="1" placeholder="Lama Penggunaan" />
+              </div>
+              <div class="input-container">
+                <label>Periode Pemakaian</label>
+                <select class="pemakaian" name="pemakaian">
+                  <option value="harian">Harian</option>
+                  <option value="bulanan">Bulanan</option>
+                  <option value="tahunan">Tahunan</option>
+                </select>
+              </div>
+              <button id="alat-elektronik">Hitung Jejak Karbon</button>
+            </div>
+          </div>
+        </div>
+        <!-- listrik rumah -->
+        <div class="listrik-rumah">
+          <div class="dua">
+            <h2>Hitung Jejak Karbon Rumah Tangga Anda</h2>
+            <div class="input-container">
+              <label>Pilih Wilayah</label>
+              <select class="region" name="region">
+                <option value="" disabled selected>Pilih Wilayah</option>
+                <option value="jawa">Jawa</option>
+                <option value="bali">Bali</option>
+                <option value="madura">Madura</option>
+              </select>
+            </div>
+            <div class="input-container">
+              <label>Batas Daya (Watt)</label>
+              <input type="number" min="1" placeholder="Batas Daya Dalam Watt" />
+            </div>
+            <div class="input-container">
+              <label>Periode Pemakaian</label>
+              <select class="pemakaian-rumah" name="pemakaian">
+                <option value="harian">Harian</option>
+                <option value="bulanan">Bulanan</option>
+                <option value="tahunan">Tahunan</option>
+              </select>
+            </div>
+            <button id="rumah">Hitung Jejak Karbon</button>
+          </div>
+        </div>
+        <!-- listrik ac -->
+
+        <div>
+          <div class="dua">
+            <h2>Hitung Jejak Karbon AC/Pendingin Ruangan Anda</h2>
+            <div class="input-container">
+              <label>Pilih Kapasitas AC (PK)</label>
+              <select class="acCapacity" name="airConditioner">
+                <option value="" disabled selected>Pilih Kapasitas</option>
+                <option value="0.5">0.5</option>
+                <option value="0.75">0.75</option>
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="input-container">
+              <label>Jumlah Pendingin Ruangan</label>
+              <input type="number" min="1" placeholder="Jumlah Total Pendingin Ruangan" class="ac-quantity" />
+            </div>
+            <div class="input-container">
+              <label>Waktu Pemakaian (jam)</label>
+              <input type="number" min="1" placeholder="Waktu Pemakaian" class="ac-duration" />
+            </div>
+            <div class="input-container">
+              <label>Total Hari Penggunaan Dalam Sebulan</label>
+              <input type="number" min="1" placeholder="Total Hari Penggunaan" class="ac-days" />
+            </div>
+            <div class="input-container">
+              <label>Periode Pemakaian</label>
+              <select class="pemakaian-ac" name="pemakaian">
+                <option value="harian">Harian</option>
+                <option value="bulanan">Bulanan</option>
+                <option value="tahunan">Tahunan</option>
+              </select>
+            </div>
+            <div>
+              <button id="calculate-ac">Hitung Jejak Karbon</button>
+            </div>
+          </div>
+    </section>
+    <hr />
+    <section class="hasil">
+      <div class="history"></div>
+      <h3>Total Emisi Karbon: <span id="total-emissions">0</span> kg CO₂</h3>
+      </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+
+  <script>
+    // const tabs = document.querySelectorAll(`.tab_btn`);
+    // const all_content = document.querySelectorAll(`.dua`);
+
+    // tabs.forEach((tab, index) => {
+    //   tab.addEventListener(`click`, () => {
+    //     tab.classList.add(`active`);
+
+    //     var line = document.querySelectorAll(`.line`);
+    //     line.style.width = e.target.offsetWidth + "px";
+    //     line.style.width = e.target.offsetLeft + "px";
+
+    //     all_content.forEach(dua => { dua.classList.remove(`active`) });
+    //     all_content[index].classList.add(`active`);
+
+    //   })
+
+    // }) -->
+
+    const tabs = document.querySelectorAll('.tab_btn');
+    const all_content = document.querySelectorAll('.dua');
+    const line = document.querySelector('.line');
+    
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', (e) => {
+    
+        tabs.forEach(tab => tab.classList.remove('active'));
+        all_content.forEach(content => content.classList.remove('active'));
+    
+        
+        tab.classList.add('active');
+        all_content[index].classList.add('active');
+    
+        
+        line.style.width = `${tab.offsetWidth}px`; 
+        line.style.transform = `translateX(${tab.offsetLeft}px)`; 
+      });
+    });
+    
+
+
+
+
+  </script>
+</body>
+
+</html>
